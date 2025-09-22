@@ -124,6 +124,15 @@ createApp({
             this.mobileMenuOpen = false;
         },
         downloadFile(platform) {
+            // 发送下载事件到Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download', {
+                    'event_category': 'engagement',
+                    'event_label': platform.name,
+                    'value': 1
+                });
+            }
+            
             // 模拟下载功能
             if (platform.downloadUrl) {
                 window.open(platform.downloadUrl, '_blank');
@@ -162,6 +171,15 @@ createApp({
             });
         },
         openGithubProject() {
+            // 发送GitHub项目访问事件到Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'engagement',
+                    'event_label': 'github_project',
+                    'value': 1
+                });
+            }
+            
             window.open('https://github.com/Venshao/natun', '_blank');
         }
     }

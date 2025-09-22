@@ -6,32 +6,53 @@
     <title>Neno - 专业的NAT打洞点对点组网软件</title>
     <meta name="description" content="Neno是一款专业的NAT打洞点对点组网软件，让您轻松实现远程连接、文件传输和游戏联机，无需复杂配置，稳定可靠。">
     <meta name="keywords" content="NAT打洞,点对点,组网软件,远程连接,文件传输,游戏联机,Neno">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qwxrepo.github.io/natun-homepage/">
     <meta property="og:title" content="Neno - 专业的NAT打洞点对点组网软件">
     <meta property="og:description" content="让您轻松实现远程连接、文件传输和游戏联机，无需复杂配置，稳定可靠。">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://qwxrepo.github.io/natun-homepage/">
     <meta property="twitter:title" content="Neno - 专业的NAT打洞点对点组网软件">
     <meta property="twitter:description" content="让您轻松实现远程连接、文件传输和游戏联机，无需复杂配置，稳定可靠。">
-    
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQQF1B5JTP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NQQF1B5JTP');
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Neno",
+        "description": "专业的NAT打洞点对点组网软件",
+        "url": "https://venshao.github.io/",
+        "applicationCategory": "NetworkApplication",
+        "operatingSystem": ["Windows", "macOS", "Linux"]
+      }
+    </script>
+
     <!-- Vue 3 CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    
+
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -116,7 +137,7 @@
                     <h2 class="section-title">核心功能特色</h2>
                     <p class="section-subtitle">强大的技术，简单的使用体验</p>
                 </div>
-                
+
                 <div class="features-grid">
                     <div class="feature-card" v-for="feature in features" :key="feature.id">
                         <div class="feature-icon">
@@ -136,7 +157,7 @@
                     <h2 class="section-title">工作原理</h2>
                     <p class="section-subtitle">三步轻松建立连接</p>
                 </div>
-                
+
                 <div class="steps">
                     <div class="step" v-for="(step, index) in steps" :key="index">
                         <div class="step-number">{{ index + 1 }}</div>
@@ -160,7 +181,7 @@
                         <span>完全免费 · 开源软件</span>
                     </div>
                 </div>
-                
+
                 <div class="download-grid">
                     <div class="download-card" v-for="platform in platforms" :key="platform.name">
                         <div class="platform-icon">
@@ -210,7 +231,7 @@
                                 <div class="stat-label">技术支持</div>
                             </div>
                         </div>
-                        
+
                         <div class="about-features">
                             <div class="feature-highlight">
                                 <div class="feature-icon-small">
