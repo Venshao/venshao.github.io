@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neno - 专业的NAT打洞点对点组网软件</title>
+    <meta name="description" content="Neno是一款专业的NAT打洞点对点组网软件，让您轻松实现远程连接、文件传输和游戏联机，无需复杂配置，稳定可靠。">
+    <meta name="keywords" content="NAT打洞,点对点,组网软件,远程连接,文件传输,游戏联机,Neno">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qwxrepo.github.io/natun-homepage/">
+    <meta property="og:title" content="Neno - 专业的NAT打洞点对点组网软件">
+    <meta property="og:description" content="让您轻松实现远程连接、文件传输和游戏联机，无需复杂配置，稳定可靠。">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://qwxrepo.github.io/natun-homepage/">
+    <meta property="twitter:title" content="Neno - 专业的NAT打洞点对点组网软件">
+    <meta property="twitter:description" content="让您轻松实现远程连接、文件传输和游戏联机，无需复杂配置，稳定可靠。">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar" :class="{ 'scrolled': isScrolled }">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Neno</span>
+                </div>
+                <div class="nav-menu" :class="{ 'active': mobileMenuOpen }">
+                    <a href="#home" @click="scrollTo('home')" class="nav-link">首页</a>
+                    <a href="#features" @click="scrollTo('features')" class="nav-link">功能特色</a>
+                    <a href="#download" @click="scrollTo('download')" class="nav-link">下载</a>
+                    <a href="#about" @click="scrollTo('about')" class="nav-link">关于</a>
+                </div>
+                <div class="nav-toggle" @click="toggleMobileMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="hero-particles"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="highlight">Neno</span>
+                        <span class="title-badge" @click="openGithubProject">
+                            <i class="fab fa-github"></i>
+                            开源免费
+                        </span>
+                        <br>专业的NAT打洞点对点组网软件
+                    </h1>
+                    <p class="hero-subtitle">
+                        让您轻松实现远程连接、文件传输和游戏联机<br>
+                        无需复杂配置，稳定可靠，即开即用
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" @click="scrollTo('download')">
+                            <i class="fas fa-download"></i>
+                            立即下载
+                        </button>
+                        <button class="btn btn-secondary" @click="scrollTo('features')">
+                            <i class="fas fa-play"></i>
+                            了解更多
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="network-diagram">
+                        <div class="device device-1">
+                            <i class="fas fa-desktop"></i>
+                            <span>设备A</span>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="neno-server">
+                            <i class="fas fa-server"></i>
+                            <span>P2P隧道</span>
+                        </div>
+                        <div class="connection-line"></div>
+                        <div class="device device-2">
+                            <i class="fas fa-laptop"></i>
+                            <span>设备B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">核心功能特色</h2>
+                    <p class="section-subtitle">强大的技术，简单的使用体验</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card" v-for="feature in features" :key="feature.id">
+                        <div class="feature-icon">
+                            <i :class="feature.icon"></i>
+                        </div>
+                        <h3 class="feature-title">{{ feature.title }}</h3>
+                        <p class="feature-description">{{ feature.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">工作原理</h2>
+                    <p class="section-subtitle">三步轻松建立连接</p>
+                </div>
+                
+                <div class="steps">
+                    <div class="step" v-for="(step, index) in steps" :key="index">
+                        <div class="step-number">{{ index + 1 }}</div>
+                        <div class="step-content">
+                            <h3>{{ step.title }}</h3>
+                            <p>{{ step.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">立即下载</h2>
+                    <p class="section-subtitle">支持多平台，选择适合您的版本</p>
+                    <div class="download-badge">
+                        <i class="fab fa-github"></i>
+                        <span>完全免费 · 开源软件</span>
+                    </div>
+                </div>
+                
+                <div class="download-grid">
+                    <div class="download-card" v-for="platform in platforms" :key="platform.name">
+                        <div class="platform-icon">
+                            <i :class="platform.icon"></i>
+                        </div>
+                        <h3 class="platform-name">{{ platform.name }}</h3>
+                        <p class="platform-description">{{ platform.description }}</p>
+                        <div class="download-info">
+                            <span class="version">版本 {{ platform.version }}</span>
+                            <span class="size">{{ platform.size }}</span>
+                        </div>
+                        <button class="btn btn-download" @click="downloadFile(platform)">
+                            <i class="fas fa-download"></i>
+                            下载
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">关于 Neno</h2>
+                        <p class="about-description">
+                            Neno是一款专业的NAT打洞点对点组网软件，采用先进的P2P技术，
+                            能够穿透各种网络环境下的NAT设备，实现设备间的直接通信。
+                        </p>
+                        <p class="about-description">
+                            无论是远程办公、文件共享，还是游戏联机，Neno都能为您提供
+                            稳定、高效的网络连接解决方案。作为开源项目，我们致力于
+                            为用户提供完全免费、透明可信的组网工具。
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat">
+                                <div class="stat-number">10K+</div>
+                                <div class="stat-label">用户下载</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">99.9%</div>
+                                <div class="stat-label">连接成功率</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">技术支持</div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-features">
+                            <div class="feature-highlight">
+                                <div class="feature-icon-small">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>开源透明</h4>
+                                    <p>完全开源，代码公开透明，社区共同维护</p>
+                                </div>
+                            </div>
+                            <div class="feature-highlight">
+                                <div class="feature-icon-small">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h4>私有化部署</h4>
+                                    <p>支持企业级私有化部署，数据安全可控</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="tech-stack">
+                            <div class="tech-item" v-for="tech in techStack" :key="tech.name">
+                                <i :class="tech.icon"></i>
+                                <span>{{ tech.name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Neno</span>
+                        </div>
+                        <p class="footer-description">
+                            专业的NAT打洞点对点组网软件，让连接更简单。
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">快速链接</h4>
+                        <ul class="footer-links">
+                            <li><a href="#home">首页</a></li>
+                            <li><a href="#features">功能特色</a></li>
+                            <li><a href="#download">下载</a></li>
+                            <li><a href="#about">关于</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">技术支持</h4>
+                        <ul class="footer-links">
+                            <li><a href="https://gitee.com/qwxrepo/natun" target="_blank">项目主页</a></li>
+                            <li><a href="https://gitee.com/qwxrepo/natun/issues" target="_blank">问题反馈</a></li>
+                            <li><a href="https://gitee.com/qwxrepo/natun/releases" target="_blank">版本更新</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">联系我们</h4>
+                        <div class="contact-info">
+                            <p><i class="fab fa-qq"></i> QQ群：169685814</p>
+                            <p><i class="fas fa-envelope"></i> jvenshao@gmail.com</p>
+                            <p><i class="fas fa-globe"></i> https://gitee.com/qwxrepo/natun</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Neno. Copyright reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
